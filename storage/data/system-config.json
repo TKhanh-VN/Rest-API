@@ -1,0 +1,14 @@
+{
+  "adminToken": "qanhh",
+  "antiDdos": {
+    "enabled": true,
+    "windowMs": 10000,
+    "maxRequests": 80,
+    "burstWindowMs": 2000,
+    "burstMaxRequests": 25,
+    "temporaryBlacklistMs": 300000,
+    "blockEmptyUserAgent": true,
+    "protectionModeThreshold": 300,
+    "requestTimeoutMs": 15000
+  }
+}
