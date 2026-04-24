@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/assets/css/admin.css">
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">API</div>
+        <div>
+          <h1>Admin Manager</h1>
+          <p>REST API Control</p>
+        </div>
+      </div>
+
+      <nav class="navigation">
+        <button class="navigation-button active" data-section="dashboard">Dashboard</button>
+        <button class="navigation-button" data-section="plugins">Plugins</button>
+        <button class="navigation-button" data-section="endpoints">Endpoints</button>
+        <button class="navigation-button" data-section="logs">Logs</button>
+        <button class="navigation-button" data-section="security">Security</button>
+      </nav>
+    </aside>
+
+    <main class="main-content">
+      <header class="top-header">
+        <div>
+          <h2>System Control Panel</h2>
+          <p>Quản lý server, plugins, endpoints và anti-DDoS.</p>
+        </div>
+
+        <div class="token-box">
+          <input id="adminTokenInput" type="password" placeholder="Nhập admin token">
+          <button id="saveTokenButton" class="button button-primary">Lưu token</button>
+        </div>
+      </header>
+
+      <section id="dashboard" class="section active">
+        <div class="section-header">
+          <h3>Server Status</h3>
+          <button id="refreshDashboardButton" class="button button-secondary">Làm mới</button>
+        </div>
+
+        <div class="card-grid">
+          <div class="card">
+            <span class="card-label">Uptime</span>
+            <strong id="uptimeValue">...</strong>
+          </div>
+          <div class="card">
+            <span class="card-label">Heap Used</span>
+            <strong id="memoryValue">...</strong>
+          </div>
+          <div class="card">
+            <span class="card-label">Plugins</span>
+            <strong id="pluginCountValue">...</strong>
+          </div>
+          <div class="card">
+            <span class="card-label">Endpoints</span>
+            <strong id="endpointCountValue">...</strong>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h3>Traffic Monitor</h3>
+          </div>
+          <div id="trafficContent" class="text-box">Đang tải...</div>
+        </div>
+      </section>
+
+      <section id="plugins" class="section">
+        <div class="section-header">
+          <h3>Plugin Manager</h3>
+          <button id="reloadPluginsButton" class="button button-primary">Reload plugins</button>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Endpoint</th>
+                <th>Method</th>
+                <th>Status</th>
+                <th>Mô tả</th>
+                <th>Hành động</th>
+              </tr>
+            </thead>
+            <tbody id="pluginsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="endpoints" class="section">
+        <div class="section-header">
+          <h3>Endpoint Manager</h3>
+          <button id="refreshEndpointsButton" class="button button-secondary">Làm mới</button>
+        </div>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Endpoint</th>
+                <th>Method</th>
+                <th>Plugin</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="endpointsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section id="logs" class="section">
+        <div class="section-header">
+          <h3>Logs Viewer</h3>
+          <button id="clearLogsButton" class="button button-danger">Xóa logs</button>
+        </div>
+
+        <div id="logsBox" class="logs-box">Đang tải logs...</div>
+      </section>
+
+      <section id="security" class="section">
+        <div class="section-header">
+          <h3>Security / Anti-DDoS</h3>
+          <button id="refreshSecurityButton" class="button button-secondary">Làm mới</button>
+        </div>
+
+        <div class="panel">
+          <h3>Cấu hình Anti-DDoS</h3>
+          <div id="securityConfigBox" class="text-box"></div>
+        </div>
+
+        <div class="panel">
+          <h3>IP Blacklist</h3>
+          <div class="input-row">
+            <input id="blacklistIpInput" type="text" placeholder="Nhập IP cần chặn">
+            <button id="addBlacklistButton" class="button button-primary">Thêm IP</button>
+          </div>
+          <div id="blacklistBox" class="badge-list"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="/assets/js/admin.js"></script>
+</body>
+</html>
